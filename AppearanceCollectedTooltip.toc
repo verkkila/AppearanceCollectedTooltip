@@ -1,6 +1,6 @@
 ## Interface: 40400
 ## Version: 1.0.0
-## Title: AppearanceCollectedTooltip
+## Title: AppearanceCollectionTooltip
 ## Notes: Shows whether an item's appearance has been collected
 
-AppearanceCollectedTooltip.lua
+AppearanceCollectionTooltip.lua
