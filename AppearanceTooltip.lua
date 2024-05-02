@@ -3,7 +3,7 @@ local function fnAddAppearanceInfo(self)
 	if not link then return end
 	
 	local itemQuality = select(3, GetItemInfo(link))
-	if itemQuality < 2 then return end --disregard poor and common items
+	if itemQuality and itemQuality < 2 then return end --disregard poor and common items
 	
 	local id = string.match(link, "item:(%d*)")
 	if id then
