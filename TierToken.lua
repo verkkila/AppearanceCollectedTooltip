@@ -116,7 +116,7 @@ function ACT.GetTierTokenStatus(tokenName)
     local splitName = ACT_TokenizeTierTokenName(tokenName)
     if not splitName then return 0 end
     local slot, tier, classes = ACT_GetTokenAttributes(splitName)
-    if not slot or tier or classes then return 0 end
+    if not slot or not tier or not classes then return 0 end
     local myClassName = select(2, UnitClass("player"))
     for _, c in pairs(classes) do
         if c == myClassName then
