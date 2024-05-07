@@ -3,4 +3,6 @@
 ## Title: AppearanceCollectionTooltip
 ## Notes: Shows whether an item's appearance has been collected
 
+TierLookupTable.lua
+TierToken.lua
 AppearanceCollectionTooltip.lua
