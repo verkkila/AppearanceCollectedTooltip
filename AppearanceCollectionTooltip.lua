@@ -56,7 +56,3 @@ end
 
 GameTooltip:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
 ItemRefTooltip:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
-ItemRefShoppingTooltip1:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
-ItemRefShoppingTooltip2:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
-ShoppingTooltip1:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
-ShoppingTooltip2:HookScript("OnTooltipSetItem", fnAddAppearanceInfo)
