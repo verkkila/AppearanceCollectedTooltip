@@ -27,7 +27,7 @@ local function ACT_SetTooltip(tooltip, collectionStatus)
 	else
 		if collectionStatus == ACT.COLLECTABLE then
 			tooltip:AddDoubleLine("Appearance", "Not collected", 1, 1, 1, 1, 1, 0)
-		else
+		elseif collectionStatus == ACT.NOT_COLLECTED then
 			tooltip:AddDoubleLine("Appearance", "Not collected", 1, 1, 1, 1, 0, 0)
 		end
 	end
