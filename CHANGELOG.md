@@ -1,3 +1,8 @@
+### 1.0.3
+
+Increased verbosity in tooltips
+Fixed a bug where certain items would show as collectable when the appearance is already collected
+
 ### 1.0.2
 
 Support for T7 and T8 tokens.
