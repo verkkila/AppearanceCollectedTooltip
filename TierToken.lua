@@ -9,6 +9,7 @@ local helmTokens = {
 
 local shoulderTokens = {
     "Pauldrons",
+    "Spaulders",
     "Mantle",
     "Regalia",
     "Mark of Sanctification"
@@ -35,6 +36,19 @@ local gloveTokens = {
     "Mark of Sanctification"
 }
 
+local tokenDifficulty = {
+    ["Helm"] = ACT.NORMAL,
+    ["Spaulders"] = ACT.NORMAL,
+    ["Chestguard"] = ACT.NORMAL,
+    ["Leggings"] = ACT.NORMAL,
+    ["Gloves"] = ACT.NORMAL,
+    ["Crown"] = ACT.HEROIC,
+    ["Mantle"] = ACT.HEROIC,
+    ["Breastplate"] = ACT.HEROIC,
+    ["Legplates"] = ACT.HEROIC,
+    ["Gauntlets"] = ACT.HEROIC,
+}
+
 local tierInfo = {
     ["Fallen"] = ACT.TIER_4,
     ["Vanquished"] = ACT.TIER_5,
@@ -53,10 +67,8 @@ local classInfo = {
     ["Vanquisher"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"},
 }
 
-local tokenAttr = {}
-
 function ACT.SlotInfoForToken(phrase)
-    for i=1, 4 do
+    for i=1, 5 do
         if helmTokens[i] == phrase then return "HEADSLOT" end
         if shoulderTokens[i] == phrase then return "SHOULDERSLOT" end
         if chestTokens[i] == phrase then return "CHESTSLOT" end
@@ -86,21 +98,16 @@ end
 
 local function ACT_GetTokenAttributes(tokenizedStr)
     local ret = {}
-    for _, t in pairs(tokenizedStr) do
-        local s, t, c = ACT.SlotInfoForToken(t), ACT.TierInfoForToken(t), classInfo[t]
-        if s then ret["slot"] = s end
-        if t then ret["tier"] = t end
-        if c then ret["classes"] = c end
+    for _, token in pairs(tokenizedStr) do
+        local slot, tier, classes = ACT.SlotInfoForToken(token), ACT.TierInfoForToken(token), classInfo[token]
+        if slot then
+            ret["originalSlot"] = token
+            ret["slot"] = slot
+        end
+        if tier then ret["tier"] = tier end
+        if classes then ret["classes"] = classes end
     end
-    return ret.slot, ret.tier, ret.classes
-end
-
-local function ACT_IsTokenForMyClass(classesList)
-    local myClass = select(2, UnitClass("player"))
-    for _, c in pairs(classesList) do
-        if myClass == c then return true end
-    end
-    return false
+    return ret.slot, ret.tier, ret.classes, ret.originalSlot
 end
 
 function ACT.IsItemTierToken(itemName, itemLink)
@@ -115,12 +122,21 @@ end
 function ACT.GetTierTokenStatus(tokenName)
     local splitName = ACT_TokenizeTierTokenName(tokenName)
     if not splitName then return 0 end
-    local slot, tier, classes = ACT_GetTokenAttributes(splitName)
+
+    local slot, tier, classes, origSlot = ACT_GetTokenAttributes(splitName)
     if not slot or not tier or not classes then return 0 end
+
+    if tier > ACT.TIER_8_25 then return 0 end --prevent erroring on Regalias until implemented
+
     local myClassName = select(2, UnitClass("player"))
     for _, c in pairs(classes) do
         if c == myClassName then
-            local id = ACT.TierLookup[tier][myClassName][slot]
+            local id = nil
+            if tier == ACT.TIER_7_10 or tier == ACT.TIER_8_10 then
+                local version = tokenDifficulty[origSlot] --bump version up one index if it's 25-man
+                tier = tier + version
+            end
+            id = ACT.TierLookup[tier][myClassName][slot]
             if not id or id == 0 then return 0 end
             return ACT.GetAppearanceCollectionStatus(id)
         end
