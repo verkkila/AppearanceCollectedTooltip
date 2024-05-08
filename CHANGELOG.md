@@ -1,3 +1,7 @@
+### 1.0.2
+
+Support for T7 and T8 tokens.
+
 ### 1.0.1
 
 Add support for tier tokens from TBC (raid tiers 4,5, and 6).
