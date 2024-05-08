@@ -1,3 +1,7 @@
+### 1.0.4
+
+Fixed an issue where collected items would not show as such when the character is ineligible to collect them.
+
 ### 1.0.3
 
 Increased verbosity in tooltips
