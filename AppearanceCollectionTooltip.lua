@@ -55,6 +55,8 @@ function ACT.GetAppearanceCollectionStatus(itemId)
 	if canCollect then
 		return ACT.COLLECTABLE
 	else
+		local isSourceCollected = select(5, C_TransmogCollection.GetAppearanceSourceInfo(sourceId))
+		if isSourceCollected then return ACT.COLLECTED end
 		return ACT.NOT_COLLECTABLE, ACT_GetReason(itemId)
 	end
 	return ACT.UNCOLLECTABLE
