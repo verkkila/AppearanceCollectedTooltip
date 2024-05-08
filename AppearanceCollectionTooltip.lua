@@ -47,9 +47,10 @@ function ACT.GetAppearanceCollectionStatus(itemId)
 	if not itemId then return 0 end
 	local sourceId = select(2, C_TransmogCollection.GetItemInfo(itemId))
 	if not sourceId then return 0 end
-	local isCollected = select(5, C_TransmogCollection.GetAppearanceSourceInfo(sourceId))
+	local info = C_TransmogCollection.GetAppearanceInfoBySource(sourceId)
+	if not info then return 0 end
 	local canCollect = select(2, C_TransmogCollection.PlayerCanCollectSource(sourceId))
-	if isCollected then
+	if info.appearanceIsCollected then
 		return ACT.COLLECTED
 	else
 		if canCollect then
