@@ -12,7 +12,7 @@ local TIER_10 = 9
 
 ACT.TokenAttributes = {
     [29759] = {["tier"] = TIER_4, ["slot"] = "HEADSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
-    [29672] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29762] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
     [29755] = {["tier"] = TIER_4, ["slot"] = "CHESTSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
     [29756] = {["tier"] = TIER_4, ["slot"] = "HANDSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
     [29765] = {["tier"] = TIER_4, ["slot"] = "LEGSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
