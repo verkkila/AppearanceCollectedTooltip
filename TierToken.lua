@@ -1,12 +1,8 @@
 local addonName, ACT = ...
 
 function ACT.GetTokenAttributes(itemId)
-    for id, attr in pairs(ACT.TokenAttributes) do
-        if tonumber(id) == tonumber(itemId) then
-            return attr
-        end
-    end
-    return nil
+    local nItemId = tonumber(itemId)
+    return ACT.TokenAttributes[nItemId]
 end
 
 function ACT.IsItemTierToken(itemId)
