@@ -1,3 +1,8 @@
+### 1.0.5
+
+Fixed an issue where tier token collection status would not display for non-English clients.
+Added reasoning for non-collectible tier tokens (i.e. of the wrong class) for consistency.
+
 ### 1.0.4
 
 Fixed an issue where collected items would not show as such when the character is ineligible to collect them.

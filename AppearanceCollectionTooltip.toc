@@ -1,5 +1,5 @@
 ## Interface: 40400
-## Version: 1.0.4
+## Version: 1.0.5
 ## Title: AppearanceCollectionTooltip
 ## Notes: Shows whether an item's appearance has been collected
 
