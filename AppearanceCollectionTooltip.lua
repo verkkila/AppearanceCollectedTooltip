@@ -78,17 +78,18 @@ local function fnAddAppearanceInfo(self)
 	local name, link = self:GetItem()
 	if not link then return end
 
-	if ACT.IsItemTierToken(name, link) then
-		local status, reason = ACT.GetTierTokenStatus(name)
-		if status > 0 then
-			ACT_SetTooltip(self, status, reason)
-		end
-	else
-		local itemQuality = select(3, GetItemInfo(link))
-		if itemQuality and itemQuality < 2 then return end --disregard poor and common items
-	
-		local id = string.match(link, "item:(%d*)")
-		if id then
+	local itemQuality = select(3, GetItemInfo(link))
+	if itemQuality and itemQuality < 2 then return end --disregard poor and common items
+
+	local id = string.match(link, "item:(%d*)")
+	if id then
+		--could use a minor refactor here
+		if ACT.IsItemTierToken(id) then
+			local status, reason = ACT.GetTierTokenStatus(id)
+			if status > 0 then
+				ACT_SetTooltip(self, status, reason)
+			end
+		else
 			local status, reason = ACT.GetAppearanceCollectionStatus(id)
 			if status > 0 then
 				ACT_SetTooltip(self, status, reason)

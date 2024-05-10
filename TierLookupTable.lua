@@ -1,17 +1,131 @@
 local addonName, ACT = ...
 
-ACT.NORMAL = 0
-ACT.HEROIC = 1
+local TIER_4 = 1
+local TIER_5 = 2
+local TIER_6 = 3
+local TIER_7_10 = 4
+local TIER_7_25 = 5
+local TIER_8_10 = 6
+local TIER_8_25 = 7
+local TIER_9 = 8
+local TIER_10 = 9
 
-ACT.TIER_4 = 1
-ACT.TIER_5 = 2
-ACT.TIER_6 = 3
-ACT.TIER_7_10 = 4
-ACT.TIER_7_25 = 5
-ACT.TIER_8_10 = 6
-ACT.TIER_8_25 = 7
-ACT.TIER_9 = 8
-ACT.TIER_10 = 9
+ACT.TokenAttributes = {
+    [29759] = {["tier"] = TIER_4, ["slot"] = "HEADSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29672] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29755] = {["tier"] = TIER_4, ["slot"] = "CHESTSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29756] = {["tier"] = TIER_4, ["slot"] = "HANDSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29765] = {["tier"] = TIER_4, ["slot"] = "LEGSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [29761] = {["tier"] = TIER_4, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [29764] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [29753] = {["tier"] = TIER_4, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [29758] = {["tier"] = TIER_4, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [29767] = {["tier"] = TIER_4, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [29760] = {["tier"] = TIER_4, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [29763] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [29754] = {["tier"] = TIER_4, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [29757] = {["tier"] = TIER_4, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [29766] = {["tier"] = TIER_4, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [30244] = {["tier"] = TIER_5, ["slot"] = "HEADSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [30250] = {["tier"] = TIER_5, ["slot"] = "SHOULDERSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [30238] = {["tier"] = TIER_5, ["slot"] = "CHESTSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [30241] = {["tier"] = TIER_5, ["slot"] = "HANDSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [30247] = {["tier"] = TIER_5, ["slot"] = "LEGSSLOT", ["classes"] = {"HUNTER", "MAGE", "WARLOCK"}},
+    [30243] = {["tier"] = TIER_5, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [30249] = {["tier"] = TIER_5, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [30237] = {["tier"] = TIER_5, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [30240] = {["tier"] = TIER_5, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [30246] = {["tier"] = TIER_5, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "PRIEST", "DRUID"}},
+    [30242] = {["tier"] = TIER_5, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [30248] = {["tier"] = TIER_5, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [30236] = {["tier"] = TIER_5, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [30239] = {["tier"] = TIER_5, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [30245] = {["tier"] = TIER_5, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "ROGUE", "SHAMAN"}},
+    [31095] = {["tier"] = TIER_6, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [31103] = {["tier"] = TIER_6, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [31091] = {["tier"] = TIER_6, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [34851] = {["tier"] = TIER_6, ["slot"] = "WRISTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [31094] = {["tier"] = TIER_6, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [34854] = {["tier"] = TIER_6, ["slot"] = "WAISTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [31100] = {["tier"] = TIER_6, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [34857] = {["tier"] = TIER_6, ["slot"] = "FEETSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [31097] = {["tier"] = TIER_6, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [31101] = {["tier"] = TIER_6, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [31089] = {["tier"] = TIER_6, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [34848] = {["tier"] = TIER_6, ["slot"] = "WRISTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [31092] = {["tier"] = TIER_6, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [34853] = {["tier"] = TIER_6, ["slot"] = "WAISTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [31098] = {["tier"] = TIER_6, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [34856] = {["tier"] = TIER_6, ["slot"] = "FEETSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [31096] = {["tier"] = TIER_6, ["slot"] = "HEADSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [31102] = {["tier"] = TIER_6, ["slot"] = "SHOULDERSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [31090] = {["tier"] = TIER_6, ["slot"] = "CHESTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [34852] = {["tier"] = TIER_6, ["slot"] = "WRISTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [31093] = {["tier"] = TIER_6, ["slot"] = "HANDSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [34855] = {["tier"] = TIER_6, ["slot"] = "WAISTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [31099] = {["tier"] = TIER_6, ["slot"] = "LEGSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [34858] = {["tier"] = TIER_6, ["slot"] = "FEETSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID"}},
+    [40617] = {["tier"] = TIER_7_10, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40623] = {["tier"] = TIER_7_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40611] = {["tier"] = TIER_7_10, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40614] = {["tier"] = TIER_7_10, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40620] = {["tier"] = TIER_7_10, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40616] = {["tier"] = TIER_7_10, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40622] = {["tier"] = TIER_7_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40610] = {["tier"] = TIER_7_10, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40613] = {["tier"] = TIER_7_10, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40619] = {["tier"] = TIER_7_10, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40618] = {["tier"] = TIER_7_10, ["slot"] = "HEADSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40624] = {["tier"] = TIER_7_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40612] = {["tier"] = TIER_7_10, ["slot"] = "CHESTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40615] = {["tier"] = TIER_7_10, ["slot"] = "HANDSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40621] = {["tier"] = TIER_7_10, ["slot"] = "LEGSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40632] = {["tier"] = TIER_7_25, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40638] = {["tier"] = TIER_7_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40626] = {["tier"] = TIER_7_25, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40629] = {["tier"] = TIER_7_25, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40635] = {["tier"] = TIER_7_25, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [40631] = {["tier"] = TIER_7_25, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40637] = {["tier"] = TIER_7_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40625] = {["tier"] = TIER_7_25, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40628] = {["tier"] = TIER_7_25, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40634] = {["tier"] = TIER_7_25, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [40633] = {["tier"] = TIER_7_25, ["slot"] = "HEADSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40639] = {["tier"] = TIER_7_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40627] = {["tier"] = TIER_7_25, ["slot"] = "CHESTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40630] = {["tier"] = TIER_7_25, ["slot"] = "HANDSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [40636] = {["tier"] = TIER_7_25, ["slot"] = "LEGSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45648] = {["tier"] = TIER_8_10, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45660] = {["tier"] = TIER_8_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45636] = {["tier"] = TIER_8_10, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45645] = {["tier"] = TIER_8_10, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45651] = {["tier"] = TIER_8_10, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45647] = {["tier"] = TIER_8_10, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45659] = {["tier"] = TIER_8_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45635] = {["tier"] = TIER_8_10, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45644] = {["tier"] = TIER_8_10, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45650] = {["tier"] = TIER_8_10, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45649] = {["tier"] = TIER_8_10, ["slot"] = "HEADSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45661] = {["tier"] = TIER_8_10, ["slot"] = "SHOULDERSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45637] = {["tier"] = TIER_8_10, ["slot"] = "CHESTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45646] = {["tier"] = TIER_8_10, ["slot"] = "HANDSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45652] = {["tier"] = TIER_8_10, ["slot"] = "LEGSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45639] = {["tier"] = TIER_8_25, ["slot"] = "HEADSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45657] = {["tier"] = TIER_8_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45633] = {["tier"] = TIER_8_25, ["slot"] = "CHESTSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45642] = {["tier"] = TIER_8_25, ["slot"] = "HANDSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45654] = {["tier"] = TIER_8_25, ["slot"] = "LEGSSLOT", ["classes"] = {"WARRIOR", "HUNTER", "SHAMAN"}},
+    [45638] = {["tier"] = TIER_8_25, ["slot"] = "HEADSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45656] = {["tier"] = TIER_8_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45632] = {["tier"] = TIER_8_25, ["slot"] = "CHESTSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45641] = {["tier"] = TIER_8_25, ["slot"] = "HANDSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45653] = {["tier"] = TIER_8_25, ["slot"] = "LEGSSLOT", ["classes"] = {"PALADIN", "PRIEST", "WARLOCK"}},
+    [45640] = {["tier"] = TIER_8_25, ["slot"] = "HEADSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45658] = {["tier"] = TIER_8_25, ["slot"] = "SHOULDERSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45634] = {["tier"] = TIER_8_25, ["slot"] = "CHESTSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45643] = {["tier"] = TIER_8_25, ["slot"] = "HANDSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}},
+    [45655] = {["tier"] = TIER_8_25, ["slot"] = "LEGSSLOT", ["classes"] = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}}
+}
 
 ACT.TierLookup = {
     {--T4 START
