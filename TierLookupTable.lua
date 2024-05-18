@@ -136,6 +136,10 @@ ACT.TokenAttributes = {
     [45655] = {["tier"] = TIER_8_25, ["slot"] = "LEGSSLOT", ["classes"] = VANQUISHER}
 }
 
+-----------------------------
+-----PVE TIER ITEM TABLE-----
+-----------------------------
+
 ACT.TierLookup = {
     {--T4 START
         ["DRUID"] = {
@@ -647,4 +651,233 @@ ACT.TierLookup = {
             ["LEGSSLOT"] = 46169,
         }
     }--T8 25MAN END
+}
+
+-----------------------------
+-----PVP TIER ITEM TABLE-----
+-----------------------------
+
+ACT.TierLookupPvP = {
+    {--T4 START
+        ["DRUID"] = {
+            ["HEADSLOT"] = 31376,
+            ["SHOULDERSLOT"] = 31378,
+            ["CHESTSLOT"] = 31379,
+            ["HANDSSLOT"] = 31375,
+            ["LEGSSLOT"] = 31377,
+        },
+        ["HUNTER"] = {
+            ["HEADSLOT"] = 28331,
+            ["SHOULDERSLOT"] = 28333,
+            ["CHESTSLOT"] = 28334,
+            ["HANDSSLOT"] = 28335,
+            ["LEGSSLOT"] = 28332,
+        },
+        ["MAGE"] = {
+            ["HEADSLOT"] = 25855,
+            ["SHOULDERSLOT"] = 25854,
+            ["CHESTSLOT"] = 25856,
+            ["HANDSSLOT"] = 25857,
+            ["LEGSSLOT"] = 25858,
+        },
+        ["PALADIN"] = {
+            ["HEADSLOT"] = 31616,
+            ["SHOULDERSLOT"] = 31619,
+            ["CHESTSLOT"] = 31613,
+            ["HANDSSLOT"] = 31614,
+            ["LEGSSLOT"] = 31618,
+        },
+        ["PRIEST"] = {
+            ["HEADSLOT"] = 31410,
+            ["SHOULDERSLOT"] = 31412,
+            ["CHESTSLOT"] = 31413,
+            ["HANDSSLOT"] = 31409,
+            ["LEGSSLOT"] = 31411,
+        },
+        ["ROGUE"] = {
+            ["HEADSLOT"] = 25830,
+            ["SHOULDERSLOT"] = 25832,
+            ["CHESTSLOT"] = 25831,
+            ["HANDSSLOT"] = 25834,
+            ["LEGSSLOT"] = 25833,
+        },
+        ["SHAMAN"] = {
+            ["HEADSLOT"] = 27471,
+            ["SHOULDERSLOT"] = 27473,
+            ["CHESTSLOT"] = 27469,
+            ["HANDSSLOT"] = 27470,
+            ["LEGSSLOT"] = 27472,
+        },
+        ["WARLOCK"] = {
+            ["HEADSLOT"] = 24553,
+            ["SHOULDERSLOT"] = 24554,
+            ["CHESTSLOT"] = 24552,
+            ["HANDSSLOT"] = 24556,
+            ["LEGSSLOT"] = 24555,
+        },
+        ["WARRIOR"] = {
+            ["HEADSLOT"] = 24545,
+            ["SHOULDERSLOT"] = 24546,
+            ["CHESTSLOT"] = 24544,
+            ["HANDSSLOT"] = 24549,
+            ["LEGSSLOT"] = 24547,
+        },
+    },--T4 END
+    {--T5 START
+        ["DRUID"] = {
+            ["HEADSLOT"] = 31988,
+            ["SHOULDERSLOT"] = 31990,
+            ["CHESTSLOT"] = 31991,
+            ["HANDSSLOT"] = 31987,
+            ["LEGSSLOT"] = 31989,
+        },
+        ["HUNTER"] = {
+            ["HEADSLOT"] = 31962,
+            ["SHOULDERSLOT"] = 31964,
+            ["CHESTSLOT"] = 31960,
+            ["HANDSSLOT"] = 31961,
+            ["LEGSSLOT"] = 31963,
+        },
+        ["MAGE"] = {
+            ["HEADSLOT"] = 32048,
+            ["SHOULDERSLOT"] = 32047,
+            ["CHESTSLOT"] = 32050,
+            ["HANDSSLOT"] = 32049,
+            ["LEGSSLOT"] = 32051,
+        },
+        ["PALADIN"] = {
+            ["HEADSLOT"] = 32022,
+            ["SHOULDERSLOT"] = 32024,
+            ["CHESTSLOT"] = 32020,
+            ["HANDSSLOT"] = 32021,
+            ["LEGSSLOT"] = 32023,
+        },
+        ["PRIEST"] = {
+            ["HEADSLOT"] = 32016,
+            ["SHOULDERSLOT"] = 32018,
+            ["CHESTSLOT"] = 32019,
+            ["HANDSSLOT"] = 32015,
+            ["LEGSSLOT"] = 32017,
+        },
+        ["ROGUE"] = {
+            ["HEADSLOT"] = 31999,
+            ["SHOULDERSLOT"] = 32001,
+            ["CHESTSLOT"] = 32002,
+            ["HANDSSLOT"] = 31998,
+            ["LEGSSLOT"] = 32000,
+        },
+        ["SHAMAN"] = {
+            ["HEADSLOT"] = 32011,
+            ["SHOULDERSLOT"] = 32013,
+            ["CHESTSLOT"] = 32009,
+            ["HANDSSLOT"] = 32010,
+            ["LEGSSLOT"] = 32012,
+        },
+        ["WARLOCK"] = {
+            ["HEADSLOT"] = 31974,
+            ["SHOULDERSLOT"] = 31976,
+            ["CHESTSLOT"] = 31977,
+            ["HANDSSLOT"] = 31973,
+            ["LEGSSLOT"] = 31975,
+        },
+        ["WARRIOR"] = {
+            ["HEADSLOT"] = 30488,
+            ["SHOULDERSLOT"] = 30490,
+            ["CHESTSLOT"] = 30486,
+            ["HANDSSLOT"] = 30487,
+            ["LEGSSLOT"] = 30489,
+        },
+    },--T5 END
+    {--T6 START
+        ["DRUID"] = {
+            ["HEADSLOT"] = 33691,
+            ["SHOULDERSLOT"] = 33693,
+            ["CHESTSLOT"] = 33694,
+            ["WRISTSLOT"] = 33881,
+            ["HANDSSLOT"] = 33690,
+            ["WAISTSLOT"] = 33879,
+            ["LEGSSLOT"] = 33692,
+            ["FEETSLOT"] = 33880,
+        },
+        ["HUNTER"] = {
+            ["HEADSLOT"] = 33666,
+            ["SHOULDERSLOT"] = 33668,
+            ["CHESTSLOT"] = 33664,
+            ["WRISTSLOT"] = 33876,
+            ["HANDSSLOT"] = 33665,
+            ["WAISTSLOT"] = 33887,
+            ["LEGSSLOT"] = 33667,
+            ["FEETSLOT"] = 33878,
+        },
+        ["MAGE"] = {
+            ["HEADSLOT"] = 33758,
+            ["SHOULDERSLOT"] = 33757,
+            ["CHESTSLOT"] = 33760,
+            ["WRISTSLOT"] = 33913,
+            ["HANDSSLOT"] = 33759,
+            ["WAISTSLOT"] = 33912,
+            ["LEGSSLOT"] = 33761,
+            ["FEETSLOT"] = 33914,
+        },
+        ["PALADIN"] = {
+            ["HEADSLOT"] = 33724,
+            ["SHOULDERSLOT"] = 33726,
+            ["CHESTSLOT"] = 33722,
+            ["WRISTSLOT"] = 33910,
+            ["HANDSSLOT"] = 33723,
+            ["WAISTSLOT"] = 33909,
+            ["LEGSSLOT"] = 33725,
+            ["FEETSLOT"] = 33911,
+        },
+        ["PRIEST"] = {
+            ["HEADSLOT"] = 33718,
+            ["SHOULDERSLOT"] = 33720,
+            ["CHESTSLOT"] = 33721,
+            ["WRISTSLOT"] = 33901,
+            ["HANDSSLOT"] = 33717,
+            ["WAISTSLOT"] = 33900,
+            ["LEGSSLOT"] = 33719,
+            ["FEETSLOT"] = 33902,
+        },
+        ["ROGUE"] = {
+            ["HEADSLOT"] = 33701,
+            ["SHOULDERSLOT"] = 33703,
+            ["CHESTSLOT"] = 33704,
+            ["WRISTSLOT"] = 33893,
+            ["HANDSSLOT"] = 33700,
+            ["WAISTSLOT"] = 33891,
+            ["LEGSSLOT"] = 33702,
+            ["FEETSLOT"] = 33892,
+        },
+        ["SHAMAN"] = {
+            ["HEADSLOT"] = 33713,
+            ["SHOULDERSLOT"] = 33715,
+            ["CHESTSLOT"] = 33711,
+            ["WRISTSLOT"] = 33906,
+            ["HANDSSLOT"] = 33712,
+            ["WAISTSLOT"] = 33907,
+            ["LEGSSLOT"] = 33714,
+            ["FEETSLOT"] = 33908,
+        },
+        ["WARLOCK"] = {
+            ["HEADSLOT"] = 33677,
+            ["SHOULDERSLOT"] = 33679,
+            ["CHESTSLOT"] = 33680,
+            ["WRISTSLOT"] = 33883,
+            ["HANDSSLOT"] = 33676,
+            ["WAISTSLOT"] = 33882,
+            ["LEGSSLOT"] = 33678,
+            ["FEETSLOT"] = 33884,
+        },
+        ["WARRIOR"] = {
+            ["HEADSLOT"] = 33730,
+            ["SHOULDERSLOT"] = 33732,
+            ["CHESTSLOT"] = 33728,
+            ["WRISTSLOT"] = 33813,
+            ["HANDSSLOT"] = 33729,
+            ["WAISTSLOT"] = 33811,
+            ["LEGSSLOT"] = 33731,
+            ["FEETSLOT"] = 33812,
+        },
+    },
 }
