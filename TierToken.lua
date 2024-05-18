@@ -20,8 +20,29 @@ function ACT.GetTierTokenStatus(tokenItemId)
         if c == myClassName then
             local itemId = ACT.TierLookup[tokenAttr.tier][myClassName][tokenAttr.slot]
             if not itemId then return 0 end
-            return ACT.GetAppearanceCollectionStatus(itemId)
+            local statusPvE, reasonPvE = ACT.GetAppearanceCollectionStatus(itemId)
+
+            local itemIdPvP = nil
+            if tokenAttr.tier == ACT.TIER_4 or
+               tokenAttr.tier == ACT.TIER_5 or
+               tokenAttr.tier == ACT.TIER_6 then
+                itemIdPvP = ACT.TierLookupPvP[tokenAttr.tier][myClassName][tokenAttr.slot]
+            end
+
+            if itemIdPvP then
+                local statusPvP, reasonPvP = ACT.GetAppearanceCollectionStatus(itemIdPvP)
+                return {
+                    {["extra"] = "PvE", ["status"] = statusPvE, ["reason"] = reasonPvE},
+                    {["extra"] = "PvP", ["status"] = statusPvP, ["reason"] = reasonPvP}
+                }
+            else
+                return {
+                    {["status"] = statusPvE, ["reason"] = reasonPvE}
+                }
+            end
         end
     end
-    return ACT.NOT_COLLECTABLE, ACT.REASON_WRONGCLASS
+    return {
+        {["status"] = ACT.NOT_COLLECTABLE, ["reason"] = ACT.REASON_WRONGCLASS}
+    }
 end

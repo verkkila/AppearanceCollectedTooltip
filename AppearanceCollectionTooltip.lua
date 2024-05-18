@@ -63,6 +63,8 @@ function ACT.GetAppearanceCollectionStatus(itemId)
 end
 
 local function ACT_SetTooltip(tooltip, collectionStatus, reason)
+	if collectionStatus == ACT.NOT_COLLECTABLE and not reason then return end
+
 	if collectionStatus == ACT.COLLECTED then
 		tooltip:AddDoubleLine("Appearance", "Collected", 1, 1, 1, 0, 1, 0)
 	else
@@ -73,6 +75,27 @@ local function ACT_SetTooltip(tooltip, collectionStatus, reason)
 		end
 	end
 end
+
+local function ACT_SetTierTooltip(tooltip, statusTable)
+	for index, lineinfo in ipairs(statusTable) do
+		local lhs = " "
+		local rhsExtra = ""
+
+		if lineinfo.extra then rhsExtra = string.format("(%s)", lineinfo.extra) end
+		if index == 1 then lhs = "Appearance" end
+
+		if lineinfo.status and lineinfo.status == ACT.COLLECTED then
+			tooltip:AddDoubleLine(lhs, "Collected " .. rhsExtra, 1, 1, 1, 0, 1, 0)
+		else
+			if lineinfo.status and lineinfo.status == ACT.COLLECTABLE then
+				tooltip:AddDoubleLine(lhs, "Collectable " .. rhsExtra, 1, 1, 1, 1, 1, 0)
+			elseif index == 1 and lineinfo.status and lineinfo.status == ACT.NOT_COLLECTABLE and lineinfo.reason then
+				tooltip:AddDoubleLine(lhs, "Not collectable on " .. ACT_GetReasonStr(lineinfo.reason), 1, 1, 1, 1, 0, 0)
+			end
+		end
+	end
+end
+
 
 local function fnAddAppearanceInfo(self)
 	local name, link = self:GetItem()
@@ -85,9 +108,9 @@ local function fnAddAppearanceInfo(self)
 	if id then
 		--could use a minor refactor here
 		if ACT.IsItemTierToken(id) then
-			local status, reason = ACT.GetTierTokenStatus(id)
-			if status > 0 then
-				ACT_SetTooltip(self, status, reason)
+			local statusTable = ACT.GetTierTokenStatus(id)
+			if statusTable then
+				ACT_SetTierTooltip(self, statusTable)
 			end
 		else
 			local status, reason = ACT.GetAppearanceCollectionStatus(id)
