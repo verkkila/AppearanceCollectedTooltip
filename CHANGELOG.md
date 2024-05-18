@@ -1,3 +1,8 @@
+### 1.0.6
+
+Added PvP item information into T4, T5 and T6 tier token tooltips. Note that for T6 non-set pieces (i.e. wrist, waist and feet) the PvP item  
+whose information is displayed is that which matches the PvP set in appearance, e.g. Vindicator's Chain for Hunters.
+
 ### 1.0.5
 
 Fixed an issue where tier token collection status would not display for non-English clients.
