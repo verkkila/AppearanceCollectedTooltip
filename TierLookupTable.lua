@@ -22,6 +22,8 @@ local CONQUEROR = {"PALADIN", "PRIEST", "WARLOCK"}
 local VANQUISHER_TBC = {"ROGUE", "MAGE", "DRUID"}
 local VANQUISHER = {"ROGUE", "MAGE", "DRUID", "DEATHKNIGHT"}
 
+local ALLCLASSES = {"DEATHKNIGHT", "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR"}
+
 ACT.TokenAttributes = {
     [29759] = {["tier"] = TIER_4, ["slot"] = "HEADSLOT", ["classes"] = HERO},
     [29762] = {["tier"] = TIER_4, ["slot"] = "SHOULDERSLOT", ["classes"] = HERO},
@@ -137,6 +139,10 @@ ACT.TokenAttributes = {
     [45634] = {["tier"] = TIER_8_25, ["slot"] = "CHESTSLOT", ["classes"] = VANQUISHER},
     [45643] = {["tier"] = TIER_8_25, ["slot"] = "HANDSSLOT", ["classes"] = VANQUISHER},
     [45655] = {["tier"] = TIER_8_25, ["slot"] = "LEGSSLOT", ["classes"] = VANQUISHER}
+    [47242] = {["tier"] = TIER_9, ["slot"] == "PRIMARYSLOTS", ["classes"] = ALLCLASSES}
+    [47557] = {["tier"] = TIER_9, ["slot"] == "PRIMARYSLOTS", ["classes"] = CONQUEROR}
+    [47558] = {["tier"] = TIER_9, ["slot"] == "PRIMARYSLOTS", ["classes"] = PROTECTOR}
+    [47559] = {["tier"] = TIER_9, ["slot"] == "PRIMARYSLOTS", ["classes"] = VANQUISHER}
 }
 
 -----------------------------
@@ -653,7 +659,153 @@ ACT.TierLookup = {
             ["HANDSSLOT"] = 46164,
             ["LEGSSLOT"] = 46169,
         }
-    }--T8 25MAN END
+    },--T8 25MAN END
+    {--T9 START
+        ["Horde"] = {
+            ["DEATHKNIGHT"] = {
+                ["HEADSLOT"] = 48560,
+                ["SHOULDERSLOT"] = 48562,
+                ["CHESTSLOT"] = 48558,
+                ["HANDSSLOT"] = 48559,
+                ["LEGSSLOT"] = 48561,
+            },
+            ["DRUID"] = {
+                ["HEADSLOT"] = 48184,
+                ["SHOULDERSLOT"] = 48187,
+                ["CHESTSLOT"] = 48186,
+                ["HANDSSLOT"] = 48183,
+                ["LEGSSLOT"] = 48185,
+            },
+            ["HUNTER"] = {
+                ["HEADSLOT"] = 48277,
+                ["SHOULDERSLOT"] = 48279,
+                ["CHESTSLOT"] = 48275,
+                ["HANDSSLOT"] = 48276,
+                ["LEGSSLOT"] = 48278,
+            },
+            ["MAGE"] = {
+                ["HEADSLOT"] = 47774,
+                ["SHOULDERSLOT"] = 47777,
+                ["CHESTSLOT"] = 47776,
+                ["HANDSSLOT"] = 47773,
+                ["LEGSSLOT"] = 47775,
+            },
+            ["PALADIN"] = {
+                ["HEADSLOT"] = 48597,
+                ["SHOULDERSLOT"] = 48595,
+                ["CHESTSLOT"] = 48599,
+                ["HANDSSLOT"] = 48598,
+                ["LEGSSLOT"] = 48596,
+            },
+            ["PRIEST"] = {
+                ["HEADSLOT"] = 48068,
+                ["SHOULDERSLOT"] = 48071,
+                ["CHESTSLOT"] = 48070,
+                ["HANDSSLOT"] = 48067,
+                ["LEGSSLOT"] = 48069,
+            },
+            ["ROGUE"] = {
+                ["HEADSLOT"] = 48245,
+                ["SHOULDERSLOT"] = 48247,
+                ["CHESTSLOT"] = 48243,
+                ["HANDSSLOT"] = 48244,
+                ["LEGSSLOT"] = 48246,
+            },
+            ["SHAMAN"] = {
+                ["HEADSLOT"] = 48338,
+                ["SHOULDERSLOT"] = 48340,
+                ["CHESTSLOT"] = 48336,
+                ["HANDSSLOT"] = 48337,
+                ["LEGSSLOT"] = 48339,
+            },
+            ["WARLOCK"] = {
+                ["HEADSLOT"] = 47801,
+                ["SHOULDERSLOT"] = 47798,
+                ["CHESTSLOT"] = 47799,
+                ["HANDSSLOT"] = 47802,
+                ["LEGSSLOT"] = 47800,
+            },
+            ["WARRIOR"] = {
+                ["HEADSLOT"] = 48388,
+                ["SHOULDERSLOT"] = 48390,
+                ["CHESTSLOT"] = 48386,
+                ["HANDSSLOT"] = 48387,
+                ["LEGSSLOT"] = 48389,
+            }
+        }
+        ["Alliance"] = {
+            ["DEATHKNIGHT"] = {
+                ["HEADSLOT"] = 48529,
+                ["SHOULDERSLOT"] = 48535,
+                ["CHESTSLOT"] = 48531,
+                ["HANDSSLOT"] = 48537,
+                ["LEGSSLOT"] = 48533,
+            },
+            ["DRUID"] = {
+                ["HEADSLOT"] = 49158,
+                ["SHOULDERSLOT"] = 48161,
+                ["CHESTSLOT"] = 48159,
+                ["HANDSSLOT"] = 48162,
+                ["LEGSSLOT"] = 48160,
+            },
+            ["HUNTER"] = {
+                ["HEADSLOT"] = 48250,
+                ["SHOULDERSLOT"] = 48253,
+                ["CHESTSLOT"] = 48251,
+                ["HANDSSLOT"] = 48254,
+                ["LEGSSLOT"] = 48252,
+            },
+            ["MAGE"] = {
+                ["HEADSLOT"] = 47748,
+                ["SHOULDERSLOT"] = 47751,
+                ["CHESTSLOT"] = 47749,
+                ["HANDSSLOT"] = 47752,
+                ["LEGSSLOT"] = 47750,
+            },
+            ["PALADIN"] = {
+                ["HEADSLOT"] = 48564,
+                ["SHOULDERSLOT"] = 48572,
+                ["CHESTSLOT"] = 48566,
+                ["HANDSSLOT"] = 48574,
+                ["LEGSSLOT"] = 48568,
+            },
+            ["PRIEST"] = {
+                ["HEADSLOT"] = 47194,
+                ["SHOULDERSLOT"] = 47981,
+                ["CHESTSLOT"] = 47936,
+                ["HANDSSLOT"] = 47982,
+                ["LEGSSLOT"] = 47980,
+            },
+            ["ROGUE"] = {
+                ["HEADSLOT"] = 48218,
+                ["SHOULDERSLOT"] = 48221,
+                ["CHESTSLOT"] = 48219,
+                ["HANDSSLOT"] = 48222,
+                ["LEGSSLOT"] = 48220,
+            },
+            ["SHAMAN"] = {
+                ["HEADSLOT"] = 48313,
+                ["SHOULDERSLOT"] = 48315,
+                ["CHESTSLOT"] = 48310,
+                ["HANDSSLOT"] = 48312,
+                ["LEGSSLOT"] = 48314,
+            },
+            ["WARLOCK"] = {
+                ["HEADSLOT"] = 47784,
+                ["SHOULDERSLOT"] = 47787,
+                ["CHESTSLOT"] = 47786,
+                ["HANDSSLOT"] = 47783,
+                ["LEGSSLOT"] = 47785,
+            },
+            ["WARRIOR"] = {
+                ["HEADSLOT"] = 48371,
+                ["SHOULDERSLOT"] = 48374,
+                ["CHESTSLOT"] = 48372,
+                ["HANDSSLOT"] = 48375,
+                ["LEGSSLOT"] = 48373,
+            }
+        }
+    }--T9 END
 }
 
 -----------------------------
